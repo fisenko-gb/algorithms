@@ -14,7 +14,7 @@ public class Main {
         int[] array = new int[size];
         Random random = new Random();
         for (int i = 0; i < size; i++) {
-            array[i] = random.nextInt(size); // генерируем случайное число от 0 до 99
+            array[i] = random.nextInt(size); // генерируем случайное число от 0 до size
         }
         return array;
     }
