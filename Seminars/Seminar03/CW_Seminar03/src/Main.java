@@ -40,6 +40,8 @@ public Node FindEl(int key) {
 */
 
 
+import java.util.Random;
+
 // Связанный список
  class LinkedList{
     private Node head;
@@ -92,12 +94,53 @@ public Node FindEl(int key) {
         tail.nextNode = new Node();
     }
 
+    // Домашнее задание "Необходимо реализовать метод разворота связного списка (двухсвязного или односвязного на выбор)."
+    public void reverseList() {
+        Node prev = null;
+        Node current = this.head;
+        Node next;
+
+        while (current != null) {
+            next = current.nextNode;
+            current.nextNode = prev;
+            prev = current;
+            current = next;
+        }
+
+        this.head = prev;
+    }
+
+    public void printList() {
+        Node node = head;
+        while (node != null){
+            System.out.print(node.value + ", ");
+            node = node.nextNode;
+        }
+        System.out.println();
+    }
+
+    public void generateRandomList(int size) {
+
+        Random random = new Random();
+        for (int i = 0; i < size; i++) {
+            this.addFirst(random.nextInt(size)); // генерируем случайное число от 0 до size
+        }
+
+    }
 
 }
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        LinkedList list = new LinkedList();
+        list.generateRandomList(10);
+        System.out.println("Исходный список: ");
+        list.printList();
+        list.reverseList();
+        System.out.println("Перевернутый список: ");
+        list.printList();
+
     }
 }
 
